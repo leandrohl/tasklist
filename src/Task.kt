@@ -7,6 +7,10 @@ data class Task (
     var isCompleted: Boolean,
     val createdAt: Date) {
 
+    init {
+        require(title.isNotBlank()) { "O título da tarefa não pode estar vazio." }
+    }
+
     companion object {
         private var uniqueId: Int = 0
 

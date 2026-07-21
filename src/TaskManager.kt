@@ -23,12 +23,14 @@ class TaskManager: Manager<Task> {
     }
 
     override fun updateStatus(id: Int, isCompleted: Boolean): Boolean {
-        val task = taskList.find { it.id == id } ?: return false
+        val task = taskList.find { it.id == id }
+        require(task != null ) { "Tarefa com id $id não existe" }
         task.isCompleted = isCompleted
         return true
     }
 
     override fun delete(id: Int): Boolean {
+        require(taskList.any { it.id == id } ) { "Tarefa com id $id não existe" }
         return taskList.removeIf { it.id == id }
     }
 
