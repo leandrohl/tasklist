@@ -1,11 +1,11 @@
-import java.util.Date
+import java.time.LocalDateTime
 
 data class Task (
     val id: Int = generateId(),
     var title: String,
-    var description: String?,
+    var description: String? = null,
     var isCompleted: Boolean,
-    val createdAt: Date) {
+    val createdAt: LocalDateTime = LocalDateTime.now()) {
 
     init {
         require(title.isNotBlank()) { "O título da tarefa não pode estar vazio." }
